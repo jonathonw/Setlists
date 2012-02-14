@@ -1,0 +1,24 @@
+{% extends "setlists/common.html" %}
+
+{% block title %}Song Statistics{% endblock %}
+
+{% block nav %}
+  <li><a href="/all">All Setlists</a></li>
+  <li class="active"><a href="/stats">Song Stats</a></li>
+{% endblock %}
+
+{% block content %}
+  <h2>Song Statistics</h2>
+  {% if songs %}
+    <table class="table table-bordered table-striped table-condensed">
+    <thead><tr><th>Title</th><th>Number of times used</th><th>Date last used</th></tr></thead>
+    <tbody>
+    {% for s in songs %}
+      <tr><td>{{ s.title }}</td><td>{{ s.times_used }}</td><td>{{ s.last_used_date }}</td></li></tr>
+    {% endfor %}
+    </tbody>
+    </table>
+  {% else %}
+    <div class="alert alert-warning"><strong>How boring.</strong> No songs are available.</div>
+  {% endif %}
+{% endblock %}

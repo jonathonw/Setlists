@@ -1,0 +1,27 @@
+{% extends "setlists/common.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="span8">
+      <h1>Big Header!</h1>
+      <p>Here's some descriptive text.</p>
+    </div>
+    <div class="span4">
+      <div class="well">
+        <h3>Most frequently used songs:</h3>
+        {% if most_frequently_used_songs %}
+          <ol>
+          {% for s in most_frequently_used_songs %}
+            <li>{{ s.title }} (used {{ s.times_used }} time{{ s.times_used|pluralize }})</li>
+          {% endfor %}
+          </ol>
+        {% else %}
+          <div class="alert alert-warning"><strong>How boring.</strong> No songs are available.</div>
+        {% endif %}
+        <a href="/stats/" class="btn btn-info">See more</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}

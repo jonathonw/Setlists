@@ -1,0 +1,22 @@
+{% extends "setlists/common.html" %}
+
+{% block title %}All Setlists{% endblock %}
+
+{% block nav %}
+  <li class="active"><a href="/all">All Setlists</a></li>
+  <li><a href="/stats">Song Stats</a></li>
+{% endblock %}
+
+{% block content %}
+  <h2>All Setlists</h2>
+  {% if all_setlists %}
+    <table class="table table-bordered table-striped">
+    <thead><tr><th>Title</th><th>Date</th></tr></thead>
+    {% for setlist in all_setlists %}
+      <tr><td><a href="/setlist/{{ setlist.id }}">{{ setlist.title }}</a></td><td>{{ setlist.date }}</td></tr>
+    {% endfor %}
+    </table>
+  {% else %}
+    <div class="alert alert-warning"><strong>How boring.</strong> No setlists are available.</div>
+  {% endif %}
+{% endblock %}

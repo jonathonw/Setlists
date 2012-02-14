@@ -1,0 +1,17 @@
+{% extends "setlists/common.html" %}
+
+{% block title %}{{ setlist.title }}{% endblock %}
+
+{% block nav %}
+  <li class="active"><a href="/all">All Setlists</a></li>
+  <li><a href="/stats">Song Stats</a></li>
+{% endblock %}
+
+{% block content %}
+  <h2>{{ setlist.title }} on {{ setlist.date }}</h2>
+    <ol>
+    {% for entry in setlist.setlistentry_set.all %}
+      <li>{{ entry.song.title }}</li>
+    {% endfor %}
+    </ol>
+{% endblock %}
